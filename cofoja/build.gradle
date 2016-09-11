@@ -23,6 +23,3 @@ task runDemo(type: JavaExec) {
 }
 
 
-/*
-Some online documentation will tell you to specify '-processor com.google.java.contract.core.apt.AnnotationProcessor'. This can be ignored, since the jar already..
-*/
