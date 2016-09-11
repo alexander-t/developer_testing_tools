@@ -1,0 +1,28 @@
+apply plugin: 'java'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	runtime 'org.ow2.asm:asm-all:5.1'
+}
+
+project.ext {
+	cofoja = "lib/cofoja-1.3-20160207.jar"
+}
+
+compileJava {
+  classpath = files "${project.cofoja}"
+}
+
+task runDemo(type: JavaExec) {
+	classpath = sourceSets.main.runtimeClasspath
+	main = "cofoja.Time"
+	jvmArgs = ["-javaagent:${project.cofoja}"]
+}
+
+
+/*
+Some online documentation will tell you to specify '-processor com.google.java.contract.core.apt.AnnotationProcessor'. This can be ignored, since the jar already..
+*/
