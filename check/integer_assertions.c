@@ -40,33 +40,16 @@ END_TEST
 
 Suite *create_integer_assertions_suite(void)
 {
-   Suite *suite = suite_create("Basic assertions");;
-   TCase *test_case = tcase_create("Integer assertions");
-   tcase_add_test(test_case, int_eq);
-   tcase_add_test(test_case, int_ne);
-   tcase_add_test(test_case, int_lt);
-   tcase_add_test(test_case, int_le);
-   tcase_add_test(test_case, int_gt);
-   tcase_add_test(test_case, int_ge);
-   suite_add_tcase(suite, test_case);
+   Suite *suite = suite_create("Integer assertions");
+   TCase *eq_case = tcase_create("Equality");
+   tcase_add_test(eq_case, int_eq);
+   tcase_add_test(eq_case, int_ne);
+
+   TCase *ltgt_case = tcase_create("Less than/Greater than");
+   tcase_add_test(ltgt_case, int_lt);
+   tcase_add_test(ltgt_case, int_le);
+   tcase_add_test(ltgt_case, int_gt);
+   tcase_add_test(ltgt_case, int_ge);
+   suite_add_tcase(suite, ltgt_case);
    return suite;
 }
-
-/*
-ck_assert(expr)
-ck_assert_msg(expr, ...)
-ck_abort()
-ck_abort_msg(...)
-
-Check the relationship between two strings:
-         ck_assert_str_eq
-         ck_assert_str_ne
-         ck_assert_str_lt
-         ck_assert_str_le
-         ck_assert_str_gt
-         ck_assert_str_ge
-Check the relationship between two pointers:
-           ck_assert_ptr_eq
-         ck_assert_ptr_ne
-
-*/

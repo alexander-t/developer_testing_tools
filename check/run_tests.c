@@ -5,8 +5,9 @@
 int main(void)
 {
    int number_failed;
-   Suite *suite = create_integer_assertions_suite();
-   SRunner *runner = srunner_create(suite);;
+   SRunner *runner = srunner_create(create_integer_assertions_suite());
+   srunner_add_suite(runner, create_string_assertions_suite());
+   srunner_add_suite(runner, create_general_functionality_suite());
    srunner_run_all(runner, CK_NORMAL);
    number_failed = srunner_ntests_failed(runner);
    srunner_free(runner);
