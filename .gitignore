@@ -3,3 +3,8 @@ build/
 
 .idea/
 *.iml
+
+bin/
+obj/
+packages/
+*.suo
